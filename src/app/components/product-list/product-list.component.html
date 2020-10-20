@@ -1,0 +1,19 @@
+<header>
+    <h1>Products</h1>
+</header>
+
+<main *ngIf="products$| async as products">
+    <div *ngFor="let p of products" class="card">
+        <img class="card-img" [src]="p.imgUrl" [alt]="p.title">
+        <div class="card-body">
+            <p>{{p.title}}</p>
+            <div class="card-footer">
+                <span class="price">{{p.price | currency: 'INR'}}</span>
+                <span class="rating">{{p.rating}}</span>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="products.length === 0">
+        <p>No Data Found</p>
+    </div>
+</main>
